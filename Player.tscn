@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://player_sprite.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 189, 0, 21, 21 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 210, 0, 21, 21 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 21, 21 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 147, 0, 21, 21 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 168, 0, 21, 21 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "camina",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "quieto",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "salta",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 8.0
+height = 6.0
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 114, 19 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+gravedad = 5.0
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "quieto"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 3 )
